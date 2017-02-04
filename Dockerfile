@@ -1,11 +1,11 @@
-FROM alpine:latest
+FROM alpine:3.5
 MAINTAINER Remon Lam [remon@containerstack.io]
 
 RUN set -xe \
 	&& apk add --update --no-progress dhcp \
         && rm -rf /var/cache/apk/*
 
-COPY dhcpd.conf /etc/dhcp/dhcpd.conf
+COPY sources/dhcpd.conf /etc/dhcp/dhcpd.conf
 RUN ["touch", "/var/lib/dhcp/dhcpd.leases"]
 
 VOLUME ["/etc/dhcp"]

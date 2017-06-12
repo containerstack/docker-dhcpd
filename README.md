@@ -1,8 +1,15 @@
 # Running dhcpd in a container
 
 ## Build image
-docker build -t dhcp .
+docker build -t dhcpd .
 
 ## Run container from image
-docker run --net host -d -p 67:67/udp --name dhcp dhcp
-docker run --privileged --net host -d -p 67:67/udp --name dhcp dhcp
+docker run --rm -d --name dhcpd --net=host -p 67:67 -p 67:67/udp containerstack/dhcpd
+
+## Run container on Docker Swarm
+
+### Persistent Storage
+
+### Swarm Networking
+
+### Create Docker Swarm Service

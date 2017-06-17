@@ -1,4 +1,4 @@
-FROM containerstack/alpine-arm:3.6.1
+FROM containerstack/alpine:3.6.1
 MAINTAINER Remon Lam [remon@containerstack.io]
 
 RUN set -xe \

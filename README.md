@@ -21,3 +21,14 @@ docker run -d --name dhcpd --net=host -p 67:67 -p 67:67/udp -v /storage/dhcpd:/e
 ### Swarm Networking
 
 ### Create Docker Swarm Service
+docker service create \
+  --name=dhcpd \
+  --replicas=1 \
+  --constraint=node.role==manager \
+  --restart-condition any \
+  --detach=true \
+  --net=host \
+  --publish=67:67/tcp \
+  --publish=67:67/udp \
+  --mount=type=bind,src=/storage/dhcpd,dst=/etc/dhcp \
+  master:5000/dhcpd
